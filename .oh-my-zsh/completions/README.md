@@ -1,4 +1,4 @@
-Add the following to `~/.zschrc`:
+Add the following to `~/.zshrc`:
 
 ```
 aws-profiles() {
