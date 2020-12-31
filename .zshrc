@@ -1,12 +1,6 @@
-export BROWSER=/bin/true
-
-eval `ssh-agent`
-ssh-add $HOME/.ssh/id_rsa
-
-alias ssh="ssh -A"
-
 aws-profiles() {
-  cat $(ls -d ~/.aws/* | egrep "config|credentials") | grep '\[' | grep -v '#' | tr -d '[' | tr -d ']' | sed 's/^profile\s//g'
+	cat $(ls -d ~/.aws/* | egrep "config|credentials") \
+		| perl -ne 'print "$1\n" if /\[(?:profile)?\s?(.*)\]/s'
 }
 
 set-aws-profile() {
